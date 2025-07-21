@@ -1,0 +1,138 @@
+.App{
+    text-align: center;
+}
+
+html{
+    scroll-behavior: smooth;   
+}
+
+body {
+    color: #213d62 !important;
+    font-weight: 400;
+    position: relative;
+    background-color: #ecf4ff !important;
+    font-family:'Centra', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'!important;
+}
+    
+
+nav.navbar {
+    
+    background-color: #c9d6e8  !important;
+    text-align: center;
+    font: bolder 1.2rem 'Centra', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+;
+    padding: 10px;
+    position: sticky-top;
+    top: 0;
+   
+}
+
+section {
+    padding: 90px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #213d62 !important;
+    text-align: center;
+}
+p {
+    font-size: 1.3rem;
+    color: #213d62 !important;
+}
+
+.photo {
+    max-width: 20%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+span navbar-texr{
+    display: flex;
+    align-items: center;
+}
+
+.social {
+    display: inline-block;
+}
+
+.logoimg{
+    max-width: 20%; 
+}
+
+.logoimg:hover{
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.sociallogo{
+    max-width: 20%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.sociallogo:hover{
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+
+nav.navbar .nav-link {
+    color: #213d62 !important;
+    font-weight: 600;
+}
+
+.logo {
+    max-width: 20;
+    margin: 10px;
+}
+
+nav.navbar .nav-link:hover {
+    color: #1a2f4f;
+    font-size: large;
+    font-weight: 700;
+}
+
+#skills {
+    background-color: #ecf4ff !important;
+}
+#skillcard {
+    background-color: #c9d6e8 !important;
+    color: #213d62 !important;
+    
+}
+
+#buttonCV {
+    background-color: #c9d6e8 !important;
+    color: #213d62;
+}
+#buttonCV:hover {
+    background-color: #c9d6e8 !important;
+    font-size: large;
+    font-weight: 700;
+}
+
+#carousel{
+    background-color: #ecf4ff !important;
+    size: 20px;
+    font-size: 2rem;
+  cursor: pointer;
+  margin: 0 10px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  position: relative;
+}
+#imagecarousel{
+    width: 100%;
+  height: 300px;
+    object-fit: contain;
+  border-radius: 10px;
+    
+}
+#projects {
+    background-color: #ecf4ff !important;
+    color: #213d62 !important;
+}
