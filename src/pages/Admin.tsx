@@ -1,5 +1,5 @@
 import * as UserNav from "../components/UserNav";
-import Logout from "../components/Logout";
+import GridUsers from "../components/GridUsers";
 
 export default function Admin() {
     return (
@@ -7,6 +7,7 @@ export default function Admin() {
             <UserNav.NavBar />
             <h1>Pagina del Administrador</h1>
             <div>
+                <GridUsers/>
             </div>
         </div>
     );
