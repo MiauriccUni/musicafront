@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
+import Register from "./Register";
+import { NavBar } from "./NavBar";
 
 interface AuthResponse {
     token: string;
@@ -17,6 +20,15 @@ export default function Login() {
 
     const handleLogin = async () => {
         try {
+            if (!email || !password) {
+                Swal.fire({
+                    title: "Error",
+                    text: "Por favor, completa todos los campos.",
+                    icon: "error",
+                    confirmButtonText: "Intentar de nuevo",
+                });
+                return;
+            }
             const response = await axios.post<AuthResponse>(
                 "http://localhost:8080/auth/login",
                 {
@@ -29,39 +41,71 @@ export default function Login() {
 
             localStorage.setItem("token", token);
             localStorage.setItem("rol", rol.toString());
+            localStorage.setItem("email",email.toString());
 
-            if (rol === 2000) {
-                navigate("/admin");
-            } else if (rol === 2001) {
-                navigate("/client");
-            } else {
-                navigate("/");
-            }
+            Swal.fire({
+                title: "Correcto!!",
+                text: "Has iniciado sesión correctamente.",
+                icon: "success",
+                confirmButtonText: "Continuar",
+            }).then(() => {
+                if (rol == 2000) {
+                    navigate("/admin");
+                } else if (rol == 2001) {
+                    navigate("/user");
+                } else {
+                    navigate("/");
+                }
+            });
         } catch (err) {
-            setError("Invalid credentials or server error.");
-            console.error("Login failed:", err);
+            Swal.fire({
+                title: "Error",
+                text: "Credenciales inválidas",
+                icon: "error",
+                confirmButtonText: "Intentar de nuevo",
+            });
         }
+        clean();
     };
 
+    const clean = () => {
+        setEmail("");
+        setPassword("");
+    }
+
     return (
+    
         <div style={{ padding: "2rem" }}>
-            <h2>Login</h2>
-            <input
-                type="email"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                style={{ display: "block", margin: "1rem 0" }}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                style={{ display: "block", margin: "1rem 0" }}
-            />
-            <button onClick={handleLogin}>Login</button>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            <div>
+                <NavBar/>
+            </div>
+            <h2>Por favor inicia sesión</h2>
+            <div style={{
+                display: "grid",
+                justifyContent: "center",
+                alignItems:'center'
+            }}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    style={{ display: "block", margin: "1rem 0" }}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    style={{ display: "block", margin: "1rem 0" }}
+                />
+                <button onClick={handleLogin}>Ingresar</button>
+                {error && <p style={{ color: "red" }}>{error}</p>}
+
+                <div>
+                    <Register/>
+                </div>
+            </div>
         </div>
     );
 }
