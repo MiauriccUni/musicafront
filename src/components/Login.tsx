@@ -101,7 +101,6 @@ export default function Login() {
                 />
                 <button onClick={handleLogin}>Ingresar</button>
                 {error && <p style={{ color: "red" }}>{error}</p>}
-
                 <div>
                     <Register/>
                 </div>

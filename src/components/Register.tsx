@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -11,8 +10,6 @@ interface PostResponse{
     password: string;
     telephone: string
     rol: string;
-
-
 }
 
 export default function Register(){
