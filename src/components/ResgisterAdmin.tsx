@@ -12,27 +12,35 @@ interface PostResponse {
   rol: string;
 }
 
-export default function Register() {
+export default function RegisterAdmin() {
+  let [id, setId] = useState<number>();
   const [name, setName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmpass, setConfirmpass] = useState<string>("");
-  const [telephone, setTelephone] = useState("");
+  const [telephone, setTelephone] = useState<string>("");
+  const [rol, setRol] = useState<string>("");
 
-  const signin = async () => {
+  const reg = async () => {
     try {
-      if (!name || !lastName || !email || !password || !telephone || confirmpass) {
-        Swal.fire({
-          title: "Error",
-          text: "Por favor, completa todos los campos.",
-          icon: "error",
-          confirmButtonText: "Intentar de nuevo",
-        });
-
-        return;
-      }
-
+    //   if (
+    //     !name ||
+    //     !lastName ||
+    //     !email ||
+    //     !password ||
+    //     !telephone ||
+    //     confirmpass ||
+    //     rol
+    //   ) {
+    //     Swal.fire({
+    //       title: "Error",
+    //       text: "Por favor, completa todos los campos.",
+    //       icon: "error",
+    //       confirmButtonText: "Intentar de nuevo",
+    //     });
+    //     return;
+    //   }
       if (confirmpass != password) {
         Swal.fire({
           title: "Error",
@@ -42,27 +50,26 @@ export default function Register() {
         });
         return;
       }
+
       const response = await axios.post<PostResponse>(
         "http://localhost:8080/Music/User",
         {
+          id,
           name,
           lastName,
           email,
           password,
           telephone,
-          rol: 2001,
+          rol,
         }
+       
       );
 
-      await axios.post<string>(
-        `http://localhost:8080/Music/Subscription/assign-subscription?user_id=${
-          response.data.id
-        }&subscription_id=${1}`
-      );
-
+      console.log(
+        name, lastName, email, password, telephone, confirmpass, rol
+      )
       Swal.fire({
         title: "Usuario Registrado!",
-        text: "Ahora puedes iniciar sesión",
         icon: "success",
         confirmButtonText: "Continuar",
       });
@@ -74,10 +81,8 @@ export default function Register() {
         confirmButtonText: "Intentar de Nuevo",
       });
     }
-
     clean();
   };
-
   const clean = () => {
     setName("");
     setName("");
@@ -88,7 +93,7 @@ export default function Register() {
     setTelephone("");
   };
 
-  return (
+  return(
     <div style={{ padding: "2rm" }}>
       <h2>Registro</h2>
       <div
@@ -98,6 +103,13 @@ export default function Register() {
           alignItems: "center",
         }}
       >
+        <input
+          type="number"
+          placeholder="Id"
+          onChange={(e) => setId(e.target.valueAsNumber)}
+          value={id}
+          style={{ display: "block", margin: "1rem 0" }}
+        />
         <input
           type="text"
           placeholder="Nombre"
@@ -141,8 +153,17 @@ export default function Register() {
           value={telephone}
           style={{ display: "block", margin: "1rem 0" }}
         />
-        <button onClick={signin}>Registrar</button>
+        <input
+          type="number"
+          placeholder="Rol"
+          onChange={(e) => setRol(e.target.value)}
+          value={rol}
+          style={{ display: "block", margin: "1rem 0" }}
+        />
+        <button onClick={reg}>Registrar</button>
       </div>
     </div>
+
   );
+
 }

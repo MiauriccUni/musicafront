@@ -1,5 +1,4 @@
 import * as UserNav from "../components/UserNav";
-import GridUsers from "../components/GridUsers";
 import { useNavigate } from "react-router-dom";
 
 export default function Admin() {
@@ -7,6 +6,10 @@ export default function Admin() {
 
     function adminsUsers() {
         navigate("/Usersadmin");
+    }
+
+    function adminSubs() {
+        navigate("/AdminSubs");
     }
     
     return (
@@ -16,6 +19,10 @@ export default function Admin() {
             <div>
                 <button 
                  onClick={adminsUsers}>Administración de Usuarios</button>
+            </div>
+            <div>
+                <button 
+                 onClick={adminSubs}>Administración de Subscripciones</button>
             </div>
         </div>
     );

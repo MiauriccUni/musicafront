@@ -1,11 +1,8 @@
-import * as UserNav from "../components/UserNav";
-import GridUsers from "../components/GridUsers";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import RegisterAdmin from "../components/ResgisterAdmin";
 
-export default function Usersadmin() {
+export default function Deletesubs() {
   let [id, setId] = useState<number>();
 
   const del = async () => {
@@ -17,17 +14,19 @@ export default function Usersadmin() {
           icon: "error",
           confirmButtonText: "Intentar de nuevo",
         });
+        return;
       }
       const response = await axios.delete<string>(
-        "http://localhost:8080/Music/User/" + id,
+        "http://localhost:8080/Music/Subscription/" + id,
         {
           data: { id },
         }
       );
-      const messager = response.data;
+      const mesager = response.data;
+
       Swal.fire({
-        title: messager,
-        text: "Usuario eliminado",
+        title: mesager,
+        text: "Subscripcion correctamente eliminada",
         icon: "success",
         confirmButtonText: "Continuar",
       });
@@ -40,33 +39,26 @@ export default function Usersadmin() {
       });
     }
   };
-
   
-  return (
+  return(
     <div>
-      <UserNav.NavBar />
-      <h2>Lista de Usuarios</h2>
-
-      <GridUsers />
-
-      <RegisterAdmin/>
-
-      <div style={{
+     <h2 style={{ padding: "20px" }}>Eliminar Subscripciones</h2>
+      <div 
+      style={{
         padding: "2rm",
         display: "grid ",
         justifyContent: "center",
         alignContent: "center",
       }}>
-        <h2>Eliminar Usuarios</h2>
         <input
           type="number"
-          placeholder="Id a eliminar"
+          placeholder="Id"
           onChange={(e) => setId(e.target.valueAsNumber)}
           value={id}
           style={{ display: "block", margin: "1rem 0" }}
-        ></input>
+        />
         <button onClick={del}>Eliminar</button>
       </div>
-    </div>
-  );
+      </div>
+  )
 }
