@@ -11,7 +11,10 @@ export default function Admin() {
     function adminSubs() {
         navigate("/AdminSubs");
     }
-    
+
+    function adminUserSubs() {
+        navigate("/AdminUserSub");
+    }
     return (
         <div>
             <UserNav.NavBar />
@@ -23,6 +26,10 @@ export default function Admin() {
             <div>
                 <button 
                  onClick={adminSubs}>Administración de Subscripciones</button>
+            </div>
+            <div>
+                <button 
+                 onClick={adminUserSubs}>Administración de Usuarios y Subscripciones</button>
             </div>
         </div>
     );

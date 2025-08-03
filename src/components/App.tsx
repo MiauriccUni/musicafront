@@ -5,6 +5,7 @@ import Admin from "../pages/Admin";
 import User from "../pages/User";
 import Usersadmin from "../pages/Usersadmin"
 import AdminSubs from "../pages/AdminSubs";
+import AdminUserSubs from "../pages/AdminUserSub";
 
 function App() {
     return (
@@ -15,8 +16,8 @@ function App() {
                 <Route path="/user" element={<User />} />
                 <Route path= "/usersadmin" element={<Usersadmin/>}/>
                 <Route path= "/adminsubs" element={<AdminSubs/>}/>
+                <Route path= "/AdminUserSub" element={<AdminUserSubs/>}/>
             </Routes>
-            
         </BrowserRouter>
     );
 }

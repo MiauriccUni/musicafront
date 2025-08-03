@@ -55,9 +55,7 @@ export default function Register() {
       );
 
       await axios.post<string>(
-        `http://localhost:8080/Music/Subscription/assign-subscription?user_id=${
-          response.data.id
-        }&subscription_id=${1}`
+        `http://localhost:8080/Music/Subscription/assign-subscription?user_id=${response.data.id}&subscription_id=${1}`
       );
 
       Swal.fire({
