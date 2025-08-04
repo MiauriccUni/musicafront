@@ -21,17 +21,19 @@ export default function Register() {
   const [telephone, setTelephone] = useState("");
 
   const signin = async () => {
+   
     try {
-      if (!name || !lastName || !email || !password || !telephone || confirmpass) {
+      if (!name || !lastName || !email || !password || !telephone || !confirmpass) {
         Swal.fire({
           title: "Error",
           text: "Por favor, completa todos los campos.",
           icon: "error",
           confirmButtonText: "Intentar de nuevo",
         });
-
+         
         return;
       }
+       alert("si")
 
       if (confirmpass != password) {
         Swal.fire({
@@ -42,6 +44,7 @@ export default function Register() {
         });
         return;
       }
+
       const response = await axios.post<PostResponse>(
         "http://localhost:8080/Music/User",
         {

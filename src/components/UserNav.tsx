@@ -28,7 +28,7 @@ export function NavBar() {
       >
         <Navbar.Brand className="text-center bold" >
           <button onClick={redir}
-          >Home</button>
+          >Página de inicio</button>
         </Navbar.Brand>
         <div>
           <Logout />

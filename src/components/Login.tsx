@@ -42,7 +42,6 @@ export default function Login() {
             localStorage.setItem("token", token);
             localStorage.setItem("rol", rol.toString());
             localStorage.setItem("email",email.toString());
-
             Swal.fire({
                 title: "Correcto!!",
                 text: "Has iniciado sesión correctamente.",

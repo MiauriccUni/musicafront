@@ -24,23 +24,23 @@ export default function RegisterAdmin() {
 
   const reg = async () => {
     try {
-    //   if (
-    //     !name ||
-    //     !lastName ||
-    //     !email ||
-    //     !password ||
-    //     !telephone ||
-    //     confirmpass ||
-    //     rol
-    //   ) {
-    //     Swal.fire({
-    //       title: "Error",
-    //       text: "Por favor, completa todos los campos.",
-    //       icon: "error",
-    //       confirmButtonText: "Intentar de nuevo",
-    //     });
-    //     return;
-    //   }
+      if (
+        !name ||
+        !lastName ||
+        !email ||
+        !password ||
+        !telephone ||
+        !confirmpass ||
+        !rol
+      ) {
+        Swal.fire({
+          title: "Error",
+          text: "Por favor, completa todos los campos.",
+          icon: "error",
+          confirmButtonText: "Intentar de nuevo",
+        });
+        return;
+      }
       if (confirmpass != password) {
         Swal.fire({
           title: "Error",
@@ -91,6 +91,7 @@ export default function RegisterAdmin() {
     setConfirmpass("");
     setPassword("");
     setTelephone("");
+    setRol("");
   };
 
   return(
