@@ -33,7 +33,6 @@ export default function Register() {
          
         return;
       }
-       alert("si")
 
       if (confirmpass != password) {
         Swal.fire({
